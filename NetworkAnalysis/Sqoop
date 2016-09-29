@@ -1,0 +1,4 @@
+sqoop export --connect jdbc:mysql://192.168.153.1/project --table network_analysis --username root -P --export-dir /user/edureka/hive/warehouse/jntu.db/network_analysis --input-fields-terminated-by ',' --input-lines-terminated-by '#'
+
+
+sqoop export --connect jdbc:mysql://192.168.153.1/project --table network_analysis --username root -P --export-dir /user/edureka/hive/warehouse/jntu.db/network_analysis --input-fields-terminated-by ',' --input-lines-terminated-by '#'

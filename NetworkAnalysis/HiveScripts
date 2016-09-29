@@ -1,0 +1,100 @@
+DROP DATABASE IF EXISTS JNTU CASCADE;
+CREATE DATABASE IF NOT EXISTS JNTU;
+
+USE JNTU;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS JNTU.NETWORK(
+SWITCH string,
+Enode int,
+Enum int,
+AddressId int,
+NE1 int,
+NE2 int,
+NE3 int,
+NE4 int,
+NE5 int,
+NE6 int,
+NE7 int,
+NE8 int,
+NE9 int,
+NE10 int
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/user/cloudera/JNTU/NETWORKANALYSIS/NETWORK'
+tblproperties ("skip.header.line.count"="1")
+;
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS JNTU.ADDRESS(
+ID int,
+LOCALITY string,
+ZIPCODE int,
+CITY string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/user/cloudera/JNTU/NETWORKANALYSIS/ADDRESS'
+tblproperties ("skip.header.line.count"="1")
+;
+
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS JNTU.CUSTOMER(
+Customer_Id  int,
+Name string,
+Address int,
+DOB string,
+Gender string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/user/cloudera/JNTU/NETWORKANALYSIS/CUSTOMER'
+tblproperties ("skip.header.line.count"="1")
+;
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS JNTU.PROPS
+(
+Id  int,
+Name string,
+VALUE STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/user/cloudera/JNTU/NETWORKANALYSIS/PRORPS'
+tblproperties ("skip.header.line.count"="1")
+;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS JNTU.BILLING(
+BillingId int,
+Customer_id int,
+Amount double,
+Date string,
+Year int
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/user/cloudera/JNTU/NETWORKANALYSIS/BILLINGINFO'
+tblproperties ("skip.header.line.count"="1")
+;
+
+
+CREATE TABLE IF NOT EXISTS JNTU.NETWORK_ANALYSIS
+(
+NETWORK_ANLYSIS_ID STRING,
+NAME STRING,
+AMOUNT DOUBLE,
+LOCALITY STRING,
+CITY STRING,	
+BILLING_CATEGORY STRING,
+CHURN_CATEGORY STRING,
+nwbandavg double,
+INSERTED_DATE TIMESTAMP,
+UPDATED_DATE TIMESTAMP
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.IgnoreKeyTextOutputFormat'
+TBLPROPERTIES ('textinputformat.record.delimiter'='#');

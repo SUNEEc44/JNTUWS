@@ -1,0 +1,18 @@
+cd /home/edureka/SAIWS/batches/JNTU/Network
+hadoop fs -rmr -skipTrash /user/cloudera
+hadoop fs -mkdir /user/cloudera
+hadoop fs -mkdir /user/cloudera/JNTU 
+hadoop fs -mkdir /user/cloudera/JNTU/NETWORKANALYSIS 
+hadoop fs -mkdir /user/cloudera/JNTU/NETWORKANALYSIS/CUSTOMER 
+hadoop fs -mkdir /user/cloudera/JNTU/NETWORKANALYSIS/NETWORK 
+hadoop fs -mkdir /user/cloudera/JNTU/NETWORKANALYSIS/ADDRESS
+hadoop fs -mkdir /user/cloudera/JNTU/NETWORKANALYSIS/BILLINGINFO
+hadoop fs -mkdir /user/cloudera/JNTU/NETWORKANALYSIS/PRORPS
+hadoop fs -put Networkinformation.csv /user/cloudera/JNTU/NETWORKANALYSIS/NETWORK
+hadoop fs -put CustomerData.csv /user/cloudera/JNTU/NETWORKANALYSIS/CUSTOMER
+hadoop fs -put Addressinformation.csv /user/cloudera/JNTU/NETWORKANALYSIS/ADDRESS
+hadoop fs -put Properties.csv /user/cloudera/JNTU/NETWORKANALYSIS/PRORPS
+hadoop fs -put CustomerBilling.csv /user/cloudera/JNTU/NETWORKANALYSIS/BILLINGINFO
+
+
+hadoop fs -chmod -R 777 /user/cloudera

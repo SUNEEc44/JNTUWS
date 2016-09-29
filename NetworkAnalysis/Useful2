@@ -1,0 +1,3 @@
+select locality, city ,churn_category,billing_category,amount from network_analysis where name='NORTH';
+select locality, churn_category,billing_category,sum(amount) as total,count(1) as count from network_analysis where city='HYDERABAD' GROUP BY locality,churn_category,billing_category
+order by billing_category asc;
