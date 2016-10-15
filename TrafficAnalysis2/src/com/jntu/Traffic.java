@@ -44,6 +44,8 @@ public class Traffic extends HttpServlet {
 		conn = DriverManager.getConnection(url+dbName,userName,password);
 		System.out.println("Connected to the database");
 		String option = request.getParameter("tfAnalysis");
+
+		out.println("<a href='http://localhost:8080/TrafficAnalysis2/TabbedTraffic.jsp'>Home Page</a>");
 		
 		if(option.equalsIgnoreCase("traffic_consumed_analysis"))
 		{
